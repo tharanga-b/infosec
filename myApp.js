@@ -1,8 +1,18 @@
 const express = require('express');
 const app = express();
 const helmet = require('helmet');
-
-
+app.use(helmet({
+  frameguard: {         
+    action: 'deny'
+  },
+  contentSecurityPolicy: {    
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ['style.com'],
+    }
+  },
+  dnsPrefetchControl: false    
+}))
 
 
 
